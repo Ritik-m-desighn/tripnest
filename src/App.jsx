@@ -164,15 +164,19 @@ function App() {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const submitNewsletter = (event) => {
-    event.preventDefault();
+const submitNewsletter = (event) => {
+  event.preventDefault();
 
-    setNewsletterMessage(
-      "Thanks! This frontend demo doesn't send emails."
-    );
+  const email = newsletterEmail.trim();
 
-    setNewsletterEmail("");
-  };
+  const subject = encodeURIComponent("TripNest Newsletter Subscription");
+  const body = encodeURIComponent(
+    `Hello TripNest!\n\nI would like to subscribe to your newsletter.\n\nMy email address: ${email}`
+  );
+
+  window.location.href =
+    `https://mail.google.com/mail/?view=cm&fs=1&to=Vaibhav.coder2005@gmail.com&su=${subject}&body=${body}`;
+};
 
   const scrollTo = (id) => {
     setMobileMenuOpen(false);
